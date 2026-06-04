@@ -1,0 +1,37 @@
+workflows:
+  ios-workflow:
+    name: iOS Build with Free Apple ID
+    environment:
+      xcode: 15.0
+      vars:
+        BUNDLE_ID: "com.yc.callmusicplayer"   # change to your unique bundle ID
+        APP_NAME: "CallMusicPlayer"
+    scripts:
+      - name: Install dependencies
+        script: |
+          # If you use CocoaPods or SwiftPM, add commands here
+          echo "No external dependencies"
+
+      - name: Build .ipa
+        script: |
+          xcodebuild \
+            -project CallMusicPlayer/CallMusicPlayer.xcodeproj \
+            -scheme CallMusicPlayer \
+            -sdk iphoneos \
+            -configuration Release \
+            archive \
+            -archivePath $CM_BUILD_DIR/$APP_NAME.xcarchive
+
+          xcodebuild \
+            -exportArchive \
+            -archivePath $CM_BUILD_DIR/$APP_NAME.xcarchive \
+            -exportOptionsPlist CallMusicPlayer/Info.plist \
+            -exportPath $CM_BUILD_DIR/ipa
+
+    artifacts:
+      - $CM_BUILD_DIR/ipa/*.ipa
+
+    publishing:
+      email:
+        recipients:
+          - yaochongye@gmail.com
