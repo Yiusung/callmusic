@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- development 方式导出，用于个人 Apple ID 免费签名 -->
+    <key>method</key>
+    <string>development</string>
+
+    <!-- 自动管理签名，Codemagic 的 automatic code signing 需要此项 -->
+    <key>signingStyle</key>
+    <string>automatic</string>
+
+    <!-- 编译配置：Release -->
+    <key>compileBitcode</key>
+    <false/>
+
+    <!-- 导出时包含符号文件，方便调试 -->
+    <key>uploadSymbols</key>
+    <true/>
+
+    <!-- 允许使用本地开发证书 -->
+    <key>iCloudContainerEnvironment</key>
+    <string>Development</string>
+</dict>
+</plist>
