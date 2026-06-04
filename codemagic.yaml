@@ -2,7 +2,7 @@ workflows:
   ios-workflow:
     name: iOS Build with Free Apple ID
     environment:
-      xcode: 15.0
+      xcode: latest
       vars:
         BUNDLE_ID: "com.yc.callmusicplayer"   # change to your unique bundle ID
         APP_NAME: "CallMusicPlayer"
